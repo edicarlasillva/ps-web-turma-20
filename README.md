@@ -37,4 +37,4 @@ console.log('Olá, mundo!')
 O `span` é um elemento html inline
 
 - [x] Primeira tarefa
-- [] Segunda tarefa
+- [ ] Segunda tarefa
