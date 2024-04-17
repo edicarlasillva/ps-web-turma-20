@@ -1,0 +1,7 @@
+fix: corrige uma funcionalidade (bug, por exemplo)
+feat: nova feature no projeto 
+chore: infraestrutura, instalação de dependências..
+docs: README, documentação, comentários..
+style: formatações, correções..
+refactor: refatorar, melhorar legibilidade..
+test: testes unitários, testes de integração..
