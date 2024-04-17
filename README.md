@@ -34,6 +34,8 @@ console.log('Olá, mundo!')
 <main>Olá, HTML!</main>
 ```
 
+---
+
 O `span` é um elemento html inline
 
 - [x] Primeira tarefa
