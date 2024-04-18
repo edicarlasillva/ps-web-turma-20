@@ -34,6 +34,10 @@ console.log('Olá, mundo!')
 <main>Olá, HTML!</main>
 ```
 
+<h1 align="center">
+    <img alt="Ecoleta" title="Ecoleta" src="https://i.imgur.com/bYSTKIQ.png" alt="Ecoleta" />
+</h1>
+
 ---
 
 O `span` é um elemento html inline
