@@ -1,0 +1,34 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: purple;
+}
+
+h2 {
+  opacity: 1;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+/* body {
+  background-color: green; 
+  background: black url("gradient.png") no-repeat;
+
+  background-image: url("gradient.png");
+  background-repeat: no-repeat; 
+  background-size: contain;
+} */
+
+body {
+  background-image: url("arvore.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+}

@@ -1,0 +1,32 @@
+h2 {
+  /* border-style: solid; */
+  /* border-style: dashed;
+  border-style: dotted;
+  border-style: double; */
+  /* border-color: red; */
+  /* border-width: 5px; */
+  /* border-right: solid 5px red; */
+  /* border-style: hidden; */
+
+  /* border: 5px red solid */
+  /* border-style: dotted solid double dashed; */
+  /* border-style: dotted solid;
+  border-style: dotted solid double; */
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  /* font-weight: 500; */
+  font-weight: bold;
+}
+
+div {
+  background-color: blueviolet;
+  padding: 50px;
+  border-radius: 10px;
+  height: 100px;
+  width: 100px;
+}

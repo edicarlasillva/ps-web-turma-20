@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* width: 600px; */
+  /* border: 1px solid red; */
+}
+
+.section {
+  width: 50%;
+  border: 1px solid;
+  font-size: 2rem;
+}
+
+p {
+  /* padding: 20px 5px 10px 60px;
+  margin: 20px 5px 10px 60px; */
+  /* padding: 20px 40px; */
+  padding: 20px 30px 40px;
+  border: 1px solid;
+}
+
+.square {
+  width: 200px;
+  height: 200px;
+  border: 5px solid;
+
+  background-color: blue;
+  padding: 25px;
+}
+
+.icon {
+  font-size: 48px;
+  color: purple;
+}
