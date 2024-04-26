@@ -1,0 +1,115 @@
+/* * {
+  margin: 0;
+  padding: 0;
+}
+
+.first {
+  margin-bottom: 60px;
+}
+
+div {
+  padding-top: 1px;
+}
+
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+p {
+  font-size: 3.2rem;
+}
+
+section {
+  max-width: 600px;
+  margin: auto;
+  border: 2px solid green;
+} */
+
+.static {
+  position: static;
+  border: 2px solid green;
+}
+
+.relative {
+  position: relative;
+  border: 2px solid green;
+  left: 30px;
+  /* top: 30px; */
+}
+
+.fixed {
+  border: 2px solid green;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.absolute {
+  position: absolute;
+  border: 2px solid green;
+  top: 0;
+  right: 0;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: aqua;
+  border: 2px solid green;
+}
+
+.container {
+  position: relative;
+}
+
+.box1 {
+  background-color: black;
+  position: relative;
+  z-index: 1;
+  height: 200px;
+  width: 200px;
+}
+
+.box2 {
+  background-color: gray;
+  position: absolute;
+  z-index: 3;
+  height: 200px;
+  width: 200px;
+  left: 5px;
+  top: 5px;
+}
+
+.box3 {
+  background-color: green;
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  top: 20px;
+  height: 200px;
+  width: 200px;
+}
+
+.overflow {
+  overflow: auto;
+  height: 300px;
+}
+
+.card {
+  float: left;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: blueviolet;
+}
+
+.right {
+  float: right;
+  clear: both;
+}
