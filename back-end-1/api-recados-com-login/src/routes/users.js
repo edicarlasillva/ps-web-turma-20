@@ -6,7 +6,7 @@ import { validateUserRegistration } from '../middlewares/validation'
 
 const router = express.Router()
 
-const users = []
+export const users = []
 
 router.post('/signup', validateUserRegistration, async (request, response) => {
   const { name, email, password } = request.body
