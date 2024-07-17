@@ -91,7 +91,7 @@ router.get('/:userId', (request, response) => {
 
   response.status(200).json({
     message: 'Notas listadas com sucesso',
-    userNotes
+    newNote
   })
 })
 
