@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulários</title>
+</head>
+<body>
+  <h1>Formulários</h1>
+
+  <!-- <form> -->
+    <!-- <label for="nome">Nome:</label>
+    <input type="text" id="nome" /> -->
+
+    <!-- <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" value="Carla"> -->
+
+    <!-- <input type="email" placeholder="exemplo@seudominio.com">
+
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha" required>
+    <span id="togglePassword">Mostrar</span>
+
+    <label for="idade">Idade:</label>
+    <input 
+      type="number" 
+      name="idade" 
+      id="idade" 
+      min="5" 
+      max="20"
+      step="5"
+    />
+
+    <input type="file" name="arquivo" id="">
+    <input type="color" name="cor" id="">
+
+    <input type="hidden" name="id" id="id" value="8ad065df-f65b-47c3-9274-a082ac1ba14e" />
+
+    <label for="data">Data</label>
+    <input type="date" name="" id="data">
+    <button type="submit">Enviar</button>
+  </form> -->
+
+  <form>
+    <fieldset>
+      <legend>Informações pessoais</legend>
+
+      <label for="nome">Nome</label>
+      <input type="text" name="nome" id="nome" />
+
+      <label for="email">E-mail</label>
+      <input type="email" name="email" id="email" />
+    </fieldset>
+
+    <fieldset>
+      <legend>Endereço</legend>
+
+      <label for="cidade">Cidade</label>
+      <input type="cidade" name="cidade" id="cidade" />
+    </fieldset>
+
+    <fieldset>
+      <legend>Atividade esportiva favorita</legend>
+
+      <input type="radio" name="esporte" id="futebol" value="Futebol" />
+      <label for="futebol">Futebol</label>
+
+      <input type="radio" name="esporte" id="basquete" value="Basquete" />
+      <label for="basquete">Basquete</label>
+
+      <input type="radio" name="esporte" id="tenis" checked value="Tênis" />
+      <label for="tenis">Tênis</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Interesses</legend>
+
+      <input type="checkbox" name="interesses" id="esportes" value="esportes">
+      <label for="esportes">Esportes</label>
+
+      <input type="checkbox" name="interesses" id="tecnologias" value="tecnologias">
+      <label for="tecnologias">Tecnologias</label>
+    </fieldset>
+
+    <label for="cidades">Cidades</label>
+    <select name="cidades" id="cidades">
+      <option value="sp">São Paulo</option>
+      <option value="ssa">Salvador</option>
+      <option value="rj">Rio de Janeiro</option>
+    </select>
+
+    <div>
+      <label for="mensagem">Mensagem</label>
+      <textarea name="mensagem" id="mensagem" rows="6" cols="50"></textarea>
+    </div>
+
+    <!-- <input type="submit" value="Enviar"> -->
+    <button type="submit">Enviar</button>
+  </form>
+  <script src="./scripts.js"></script>
+</body>
+</html>
