@@ -91,8 +91,23 @@ router.get('/:userId', (request, response) => {
 
   response.status(200).json({
     message: 'Notas listadas com sucesso',
-    newNote
+    userNotes
   })
+})
+
+// Rota para listar recado por id
+router.get("/details/:id", (request, response) => {
+  const { id } = request.params
+
+  const note = notes.find(note => note.id === id)
+
+  if (!note) {
+    return response.status(404).json({
+      message: "Recado não encontrado."
+    })
+  }
+
+  response.status(200).json(note)
 })
 
 export default router
