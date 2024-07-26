@@ -21,20 +21,39 @@
       <header class="header">
         <img class="logo" src="./src/assets/images/logo.svg" alt="">
 
-        <h1 class="title">Lista de Recados</h1>
-        <h2 class="subtitle">Todos os meus recados</h2>
+        <h1 class="title">Edite seu recado</h1>
+        <h2 class="subtitle">
+          Você pode alterar um recado já cadastrado
+        </h2>
       </header>
 
       <main>
-        <div class="notes-list">
-
-        </div>
+        <form id="form-edit-note">
+          <div class="form-control">
+            <label for="title-edit">Título</label>
+            <input 
+              type="text" 
+              id="title-edit" 
+              placeholder="Insira um título para o recado" 
+            />
+          </div>
+  
+          <div class="form-control">
+            <label for="description-edit">Descrição</label>
+            <textarea 
+              type="text" 
+              id="description-edit">
+            </textarea>
+          </div>
+  
+          <button class="btn-submit">Atualizar Recado</button>
+          <button class="btn-submit" type="reset">Limpar campos</button>
+        </form>
       </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./src/js/api.js"></script>
-    <script src="./src/js/scripts.js"></script>
-    <script src="./src/js/delete-note.js"></script>
+    <script src="./src/js/edit-note.js"></script>
   </body>
 </html>

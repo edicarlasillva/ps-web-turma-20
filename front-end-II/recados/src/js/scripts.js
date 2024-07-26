@@ -4,16 +4,58 @@ async function fetchNotes() {
   try {
     notesContainer.innerHTML = ''
 
-    const userId = '8f260651-f4b3-4c06-be5d-1118d2d2f27c'
+    // const userId = '071ca4b9-3695-4c66-a769-04f806187185'
+    const userId = localStorage.getItem('userId')
 
     const response = await api.get(`/notes/${userId}`)
-    const notes = response.data
+    const notes = response.data.userNotes
 
-    console.log(notes)
+    notes.forEach(note => {
+      const noteCard = document.createElement('div')
+      noteCard.classList.add('card')
 
+      noteCard.innerHTML = `
+        <h2 class="card-title">${note.title}</h2>
+        <p class="card-description">${note.description}</p>
+
+        <div class="card-icons">
+          <i class="fa-solid fa-trash" data-id=${note.id}></i>
+          <i class="fa-solid fa-edit" data-id=${note.id}></i>
+        </div>
+      `
+
+      notesContainer.appendChild(noteCard)
+
+      const deleteIcon = noteCard.querySelector('.fa-trash')
+
+      // Deletar uma nota
+      deleteIcon.addEventListener('click', () => {
+        const noteId = deleteIcon.getAttribute('data-id')
+
+        deleteNote(noteId)
+      })
+
+      // Editar uma nota
+      const editIcon = noteCard.querySelector('.fa-edit')
+      editIcon.addEventListener('click', () => {
+      const noteId = editIcon.getAttribute('data-id')
+
+      navigateToEditPage(noteId)
+      })
+    })
+
+    if (notes.length === 0) {
+      const emptyNoteList = document.createElement('h3')
+      emptyNoteList.innerText = 'Nenhum recado encontrado.'
+      notesContainer.appendChild(emptyNoteList)
+    }
   } catch (error) {
-    console.error('Erro ao buscar recados.')
+    console.error('Erro ao buscar recados.', error)
   }
+}
+
+function navigateToEditPage(noteId) {
+  location.href = `edit-note.html?id=${noteId}`
 }
 
 fetchNotes()
