@@ -1,40 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Recados</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"
-      rel="stylesheet">
-
-    <link rel="stylesheet" href="./src/assets/css/styles.css">
-    <link rel="stylesheet" href="./vendor/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
   </head>
-
   <body>
-    <div class="container">
-      <header class="header">
-        <img class="logo" src="./src/assets/images/logo.svg" alt="">
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./src/assets/css/styles.css" />
+      </head>
 
-        <h1 class="title">Lista de Recados</h1>
-        <h2 class="subtitle">Todos os meus recados</h2>
-      </header>
+      <body>
+        <div class="container">
+          <header class="header">
+            <img class="logo" src="./src/assets/images/logo.svg" alt="" />
 
-      <main>
-        <div class="notes-list">
+            <h1 class="title">Fazer login em sua conta</h1>
+            <h2 class="subtitle">
+              Ainda não tem uma conta?
+              <a href="new-user.html">Cadastre-se</a>
+            </h2>
+          </header>
 
+          <main>
+            <form id="form-login">
+              <div class="form-control">
+                <label for="email-login">E-mail</label>
+                <input
+                  type="email"
+                  id="email-login"
+                  name="email"
+                  placeholder="Insira seu e-mail"
+                />
+              </div>
+
+              <div class="form-control">
+                <label for="password-login">Senha</label>
+                <input
+                  type="password"
+                  id="password-login"
+                  name="password-login"
+                  placeholder="Insira sua senha"
+                />
+              </div>
+
+              <button class="btn-submit" type="submit">Entrar</button>
+            </form>
+          </main>
         </div>
-      </main>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./src/js/api.js"></script>
-    <script src="./src/js/scripts.js"></script>
-    <script src="./src/js/delete-note.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="./src/js/api.js"></script>
+        <script src="./src/js/login.js"></script>
+      </body>
+    </html>
   </body>
 </html>

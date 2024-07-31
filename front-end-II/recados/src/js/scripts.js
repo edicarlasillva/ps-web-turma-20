@@ -1,14 +1,32 @@
 const notesContainer = document.querySelector('.notes-list')
 
-async function fetchNotes() {
+const prevPage = document.getElementById('prev-page')
+const nextPage = document.getElementById('next-page')
+
+let currentPage = 1
+let totalPages = 1
+
+async function fetchNotes(page) {
   try {
     notesContainer.innerHTML = ''
 
     // const userId = '071ca4b9-3695-4c66-a769-04f806187185'
     const userId = localStorage.getItem('userId')
 
-    const response = await api.get(`/notes/${userId}`)
+    if (!userId) {
+      alert('Você precisa fazer login para visualizar os recados.')
+      return
+    }
+
+    const params = {
+      page,
+      perPage: 3
+    }
+
+    const response = await api.get(`/notes/${userId}`, { params })
     const notes = response.data.userNotes
+
+    totalPages = response.data.totalPages
 
     notes.forEach(note => {
       const noteCard = document.createElement('div')
@@ -49,6 +67,8 @@ async function fetchNotes() {
       emptyNoteList.innerText = 'Nenhum recado encontrado.'
       notesContainer.appendChild(emptyNoteList)
     }
+
+    updatePaginationButtons()
   } catch (error) {
     console.error('Erro ao buscar recados.', error)
   }
@@ -58,4 +78,23 @@ function navigateToEditPage(noteId) {
   location.href = `edit-note.html?id=${noteId}`
 }
 
-fetchNotes()
+fetchNotes(currentPage)
+
+prevPage.addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--
+    fetchNotes(currentPage)
+  }
+})
+
+nextPage.addEventListener('click', () => {
+  if (currentPage < totalPages) {
+    currentPage++
+    fetchNotes(currentPage)
+  }
+})
+
+function updatePaginationButtons() {
+  prevPage.disabled = currentPage === 1
+  nextPage.disabled = currentPage === totalPages
+}

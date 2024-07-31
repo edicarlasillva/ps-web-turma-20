@@ -38,7 +38,7 @@ async function updatedNote(noteId, note) {
       alert('Recado editado com sucesso.')
     }
 
-    location.href = 'index.html'
+    location.href = 'list-note.html'
   } catch (error) {
     console.error('Erro ao atualizar recado.', error)
   }

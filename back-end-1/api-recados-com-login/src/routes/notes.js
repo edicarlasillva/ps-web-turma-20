@@ -76,22 +76,62 @@ router.delete('/:id', (request, response) => {
   })
 })
 
+// router.get('/:userId', (request, response) => {
+//   const { userId } = request.params
+
+//   const user = users.find(user => user.id === userId)
+
+//   if (!user) {
+//     return response.status(404).json({
+//       message: 'Usuário não encontado.'
+//     })
+//   }
+
+//   const userNotes = notes.filter(note => note.userId === userId)
+
+//   response.status(200).json({
+//     message: 'Notas listadas com sucesso',
+//     userNotes 
+//   })
+// })
+
+// Rota para listar todos os recados de um usuário específico com suporte a paginação
 router.get('/:userId', (request, response) => {
   const { userId } = request.params
+
+  const { page, perPage } = request.query
+
+  const currentPage = parseInt(page) || 1 // valor padrão é 1
+  const itemsPerPage = parseInt(perPage) || 10
 
   const user = users.find(user => user.id === userId)
 
   if (!user) {
     return response.status(404).json({
-      message: 'Usuário não encontado.'
+      message: 'Usuário não encontrado.'
     })
   }
 
   const userNotes = notes.filter(note => note.userId === userId)
 
+  // currentPage = 1
+  // itemsPerPage = 10
+
+  // startIndex (1 - 1) * 10 = 0
+  const startIndex = (currentPage - 1) * itemsPerPage
+  //endIndex = startIndex + itemsPerPage (elemento 9)
+  const endIndex = startIndex + itemsPerPage
+
+  const paginatedNotes = userNotes.slice(startIndex, endIndex)
+
+  const totalItems = userNotes.length // quantidade de notas no array
+
+  const totalPages = Math.ceil(totalItems / itemsPerPage)
+
   response.status(200).json({
-    message: 'Notas listadas com sucesso',
-    userNotes 
+    userNotes: paginatedNotes,
+    totalPages,
+    currentPage
   })
 })
 

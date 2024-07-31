@@ -12,7 +12,7 @@ async function createNewNote(note) {
       title.value = ''
       description.value = ''
 
-      location.href = 'index.html'
+      location.href = 'list-note.html'
     }
   } catch (error) {
     console.error('Erro ao criar recado.', error)
@@ -33,3 +33,4 @@ formNewNote.addEventListener('submit', (event) => {
 
   createNewNote(newNote)
 })
+
