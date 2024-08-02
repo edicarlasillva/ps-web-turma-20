@@ -12,7 +12,11 @@ async function addNewUser(data) {
       location.href = 'list-note.html'
     }
   } catch (error) {
-    console.error('Erro ao cadastrar usuário', error)
+    if (error.response && error.response.status === 400) {
+      console.error('Erro 400: Requisição inválida', error.response.data)
+    } else {
+      console.error('Erro ao cadastrar usuário', error)
+    }
   }
 }
 
