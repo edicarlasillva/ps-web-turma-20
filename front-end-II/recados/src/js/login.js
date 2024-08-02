@@ -20,15 +20,62 @@ async function login(data) {
 formLogin.addEventListener('submit', (event) => {
   event.preventDefault()
 
-  const data = {
-    email: email.value,
-    password: password.value
-  }
+  const inputs = formLogin.querySelectorAll('input')
+  let valid = true
 
-  if (!data.email || !data.password) {
-    console.error('E-mail e senha são obrigatórios.')
-  } else {
+  inputs.forEach(input => {
+    if (!input.value) {
+      setError(input, `${input.name} é obrigatório`)
+      valid = false
+    } else {
+      setSuccess(input)
+    }
+  })
+
+  if (valid) {
+    const data = {
+      email: email.value,
+      password: password.value
+    }
+
     login(data)
   }
+
+  // if (!email.value) {
+  //   setError(email, 'E-mail é obrigatório')
+  // } else {
+  //   setSuccess(email)
+  // }
+
+  // if (!password.value) {
+  //   setError(password, 'Senha é obrigatória')
+  // } else {
+  //   setSuccess(password)
+  // }
+
+  // if (data.email && data.password) {
+  //   login(data)
+  // }
+
+  // if (!data.email || !data.password) {
+  //   console.error('E-mail e senha são obrigatórios.')
+  // } else {
+  //   login(data)
+  // }
 })
 
+function setError(input, message) {
+  const formControl = input.parentElement
+  const small = formControl.querySelector('small')
+
+  small.innerText = message
+  formControl.classList.remove('success')
+  formControl.classList.add('error')
+}
+
+function setSuccess(input) {
+  const formControl = input.parentElement
+
+  formControl.classList.remove('error')
+  formControl.classList.add('success')
+}
