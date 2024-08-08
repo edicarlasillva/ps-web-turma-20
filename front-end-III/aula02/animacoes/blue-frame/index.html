@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+    }
+
+    .element {
+      width: 150px;
+      height: 150px;
+      background-color: blue;
+      position: relative;
+
+      animation: blue-frame 5s infinite;
+    }
+
+    @keyframes blue-frame {
+      0% {
+        left: 0px;
+      }
+      50% {
+        left: 200px;
+      }
+      100% {
+        left: 0px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="element"></div>
+</body>
+</html>
