@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+    }
+
+    .element {
+      width: 150px;
+      height: 150px;
+      background-color: red;
+
+      animation: pulse 3s ease infinite alternate, nudge 5s linear infinite alternate;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        background-color: red;
+      }
+      50% {
+        background-color: orange;
+      }
+    }
+
+    @keyframes nudge {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(150px);
+      }
+      80% {
+        transform: translateX(-150px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="element"></div>
+</body>
+</html>
