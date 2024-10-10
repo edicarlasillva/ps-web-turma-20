@@ -5,6 +5,6 @@ export default {
     secondary: '#f7f8fe',
     backgroundColor: '#ffffff',
     textColor: '#94979e',
-    title: '#000000'
-  }
+    title: '#000000',
+  },
 }

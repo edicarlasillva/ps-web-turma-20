@@ -1,12 +1,12 @@
-import { RouterProvider } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import { RouterProvider } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
 
-import GlobalStyle from "./styles/global";
+import GlobalStyle from './styles/global'
 
-import light from "./themes/light";
+import light from './themes/light'
 // import dark from "./themes/dark";
 
-import { router } from "./routes";
+import { router } from './routes'
 
 export function App() {
   return (
@@ -14,5 +14,5 @@ export function App() {
       <GlobalStyle />
       <RouterProvider router={router} />
     </ThemeProvider>
-  );
+  )
 }

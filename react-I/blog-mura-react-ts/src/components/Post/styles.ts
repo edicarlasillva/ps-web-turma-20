@@ -9,7 +9,7 @@ const categoryColors: Record<string, string> = {
   Moda: '#3295B4',
   Lifestyle: '#00b894',
   Viagem: '#d63031',
-  'Art & Design': '#74b9ff'
+  'Art & Design': '#74b9ff',
 }
 
 export const ContainerList = styled.div<CategoryProps>`
@@ -21,12 +21,12 @@ export const ContainerList = styled.div<CategoryProps>`
 
     span {
       font-style: italic;
-      color: ${(({ theme }) => theme.colors.textColor)};
+      color: ${({ theme }) => theme.colors.textColor};
     }
   }
 
   .title {
-    color: ${(({ theme }) => theme.colors.title)};
+    color: ${({ theme }) => theme.colors.title};
     font-size: 28px;
     line-height: 30px;
     letter-spacing: -1px;
@@ -49,20 +49,20 @@ export const ContainerList = styled.div<CategoryProps>`
     }
 
     .author {
-      color: ${(({ theme }) => theme.colors.title)};
+      color: ${({ theme }) => theme.colors.title};
       font-size: 13px;
       line-height: 20px;
     }
 
     span {
-      color: ${(({ theme }) => theme.colors.textColor)};
+      color: ${({ theme }) => theme.colors.textColor};
       font-size: 13px;
       line-height: 20px;
     }
   }
 
   .description {
-    color: ${(({ theme }) => theme.colors.textColor)};
+    color: ${({ theme }) => theme.colors.textColor};
     font-size: 14px;
     line-height: 20px;
   }

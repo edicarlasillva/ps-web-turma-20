@@ -1,23 +1,23 @@
-import { Post } from "../Post";
+import { Post } from '../Post'
 
-import { Posts, Title } from "./styles";
+import { Posts, Title } from './styles'
 
 export interface IPost {
-  title: string;
-  description: string;
-  author: string;
-  avatar: string;
-  createdAt: string;
-  image: string;
-  category: string;
+  title: string
+  description: string
+  author: string
+  avatar: string
+  createdAt: string
+  image: string
+  category: string
 }
 
 interface PostListProps {
-  posts: IPost[];
+  posts: IPost[]
 }
 
 export function PostList({ posts }: PostListProps) {
-  console.log(posts);
+  console.log(posts)
   return (
     <>
       <Title>
@@ -31,5 +31,5 @@ export function PostList({ posts }: PostListProps) {
         ))}
       </Posts>
     </>
-  );
+  )
 }

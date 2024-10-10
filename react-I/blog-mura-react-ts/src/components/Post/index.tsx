@@ -1,8 +1,8 @@
-import { IPost } from "../PostList";
-import { ContainerList } from "./styles";
+import { IPost } from '../PostList'
+import { ContainerList } from './styles'
 
 interface PostProps {
-  post: IPost;
+  post: IPost
 }
 
 export function Post({ post }: PostProps) {
@@ -26,5 +26,5 @@ export function Post({ post }: PostProps) {
 
       <div className="description">{post.description}</div>
     </ContainerList>
-  );
+  )
 }

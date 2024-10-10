@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.header`
-  background-color: ${(({ theme }) => theme.colors.secondary)};
+  background-color: ${({ theme }) => theme.colors.secondary};
   padding: 50px 0;
 `
 

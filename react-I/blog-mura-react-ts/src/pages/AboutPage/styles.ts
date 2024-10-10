@@ -16,9 +16,3 @@ export const Title = styled.div`
     line-height: 24px;
   }
 `
-
-export const Posts = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-`
