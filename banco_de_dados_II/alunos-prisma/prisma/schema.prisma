@@ -23,5 +23,40 @@ model Student {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+  profile     Profile?
+  assessments Assessment[]
+
   @@map("students")
+}
+
+model Profile {
+  id        String    @id @default(uuid()) @db.Uuid
+  bio       String?   @db.VarChar(150)
+  image     String?   @db.VarChar(255)
+  birthDate DateTime?
+  // Nossa FK
+  studentId String    @unique @db.Uuid
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  student Student @relation(fields: [studentId], references: [id])
+
+  @@map("profiles")
+}
+
+model Assessment {
+  id         String  @id @default(uuid()) @db.Uuid
+  discipline String  @db.VarChar(60)
+  grade      Decimal @db.Decimal(4, 2)
+
+  // Nossa FK
+  studentId String @db.Uuid
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  student Student @relation(fields: [studentId], references: [id])
+
+  @@map("assessments")
 }

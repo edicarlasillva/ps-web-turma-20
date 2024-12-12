@@ -58,7 +58,6 @@ export class StudentController {
           id: true,
           name: true, 
           email: true,
-          password: true,
           age: true
         }
       })
@@ -92,7 +91,6 @@ export class StudentController {
           id: true,
           name: true, 
           email: true,
-          password: true,
           age: true
         }
       })
@@ -141,7 +139,6 @@ export class StudentController {
         select: {
           name: true,
           email: true,
-          password: true,
           age: true
         }
       })

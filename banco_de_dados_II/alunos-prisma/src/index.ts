@@ -1,16 +1,16 @@
-import express, { Request, Response } from "express"
+import express from "express"
 import cors from 'cors'
 
-import { PrismaClient } from '@prisma/client'
 import { StudentController } from "./controllers/student.controller"
+import { AssessmentController } from "./controllers/assessment.controller"
 
 const app = express()
 
 app.use(express.json())
 app.use(cors())
 
-const repository = new PrismaClient()
 const studentController = new StudentController()
+const assessmentController = new AssessmentController()
 
 // Listar todos os alunos
 app.get('/students', studentController.index)
@@ -26,6 +26,15 @@ app.put('/students/:id', studentController.update)
 
 // Exclui um aluno
 app.delete('/students/:id', studentController.delete)
+
+// Listar avaliações
+app.get('/students/:studentId/assessments', assessmentController.index)
+
+// Criar avaliação
+app.post('/students/:studentId/assessments', assessmentController.store)
+
+// Listar uma avaliação
+app.get('/students/:studentId/assessments/:id', assessmentController.show)
 
 app.listen(3000, () => {
     console.log("🚀 Server ready at: http://localhost:3000")
