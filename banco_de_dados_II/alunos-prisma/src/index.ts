@@ -36,6 +36,12 @@ app.post('/students/:studentId/assessments', assessmentController.store)
 // Listar uma avaliação
 app.get('/students/:studentId/assessments/:id', assessmentController.show)
 
+// Atualizar avaliação
+app.put('/students/:studentId/assessments/:id', assessmentController.update)
+
+// Excluir avaliação
+app.delete('/students/:studentId/assessments/:id', assessmentController.delete)
+
 app.listen(3000, () => {
     console.log("🚀 Server ready at: http://localhost:3000")
 })

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 
 import { repository } from '../database/prisma.connection'
+import { Student } from '../models/student.model'
 
 export class StudentController {
   // index -> lista todos os registros
@@ -46,13 +47,16 @@ export class StudentController {
           message: 'Preencha todos os campos obrigatórios.'
         })
       }
+
+      const newStudent = new Student(name, email, password, age)
   
       const createdStudent = await repository.student.create({
         data: {
-          name,
-          email,
-          password,
-          age
+          id: newStudent.id, // se retirar essa linha, o banco gera automaticamente o ID
+          name: newStudent.name,
+          email: newStudent.email,
+          password: newStudent.password,
+          age: newStudent.age
         },
         select: {
           id: true,
