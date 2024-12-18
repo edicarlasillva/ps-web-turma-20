@@ -1,47 +1,20 @@
 import express from "express"
 import cors from 'cors'
+import * as dotenv from 'dotenv'
 
-import { StudentController } from "./controllers/student.controller"
-import { AssessmentController } from "./controllers/assessment.controller"
+import authRoutes from './routes/auth.routes'
+import studentRoutes from './routes/students.routes'
 
 const app = express()
+
+dotenv.config()
 
 app.use(express.json())
 app.use(cors())
 
-const studentController = new StudentController()
-const assessmentController = new AssessmentController()
+app.use(authRoutes)
+app.use(studentRoutes)
 
-// Listar todos os alunos
-app.get('/students', studentController.index)
-
-// Cadastrar novo aluno
-app.post('/students', studentController.store)
-
-// Pesquisar um aluno por ID
-app.get('/students/:id', studentController.show)
-
-// Atualiza um aluno
-app.put('/students/:id', studentController.update)
-
-// Exclui um aluno
-app.delete('/students/:id', studentController.delete)
-
-// Listar avaliações
-app.get('/students/:studentId/assessments', assessmentController.index)
-
-// Criar avaliação
-app.post('/students/:studentId/assessments', assessmentController.store)
-
-// Listar uma avaliação
-app.get('/students/:studentId/assessments/:id', assessmentController.show)
-
-// Atualizar avaliação
-app.put('/students/:studentId/assessments/:id', assessmentController.update)
-
-// Excluir avaliação
-app.delete('/students/:studentId/assessments/:id', assessmentController.delete)
-
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("🚀 Server ready at: http://localhost:3000")
 })
