@@ -4,10 +4,12 @@ import storage from "redux-persist/lib/storage";
 
 import todosReducer from './slices/todoSlices'
 import assessmentsReducer from './slices/assessmentsSlice'
+import modalReducer from './slices/modalSlice'
 
 const rootReducer = combineReducers({
   todos: todosReducer,
-  assessments: assessmentsReducer
+  assessments: assessmentsReducer,
+  modal: modalReducer
 })
 
 export const persistedReducer = persistReducer({
