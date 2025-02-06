@@ -1,29 +1,63 @@
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { addTodo } from "../../store/slices/todoSlices";
+import { FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Container, TextField, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+
+import { useAppDispatch } from "../../store/hooks";
+import { login } from "../../store/slices/userSlice";
 
 export function Home() {
-  const todos = useAppSelector((state) => state.todos);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  function handleAddTodo() {
-    const newTodo = {
-      id: todos.length + 1,
-      title: `Nova tarefa ${todos.length + 1}`,
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+
+    const response = {
+      id: 1,
+      name: "Carla Silva",
+      token: "7aca7c72-adcb-44e1-915b-007a58bef2fd",
     };
 
-    dispatch(addTodo(newTodo));
+    dispatch(login(response));
+    navigate("/avaliacoes");
   }
 
   return (
     <>
-      <h1>Lista de tarefas</h1>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </ul>
+      <Container>
+        <form onSubmit={handleSubmit}>
+          <Typography variant="h6" gutterBottom>
+            Fazer Login
+          </Typography>
 
-      <button onClick={handleAddTodo}>Adicionar tarefa</button>
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12, md: 12 }}>
+              <TextField
+                fullWidth
+                name="email"
+                variant="outlined"
+                label="E-mail"
+              />
+            </Grid>
+
+            <Grid size={{ xs: 12, md: 12 }}>
+              <TextField
+                fullWidth
+                name="password"
+                variant="outlined"
+                label="Senha"
+              />
+            </Grid>
+
+            <Grid>
+              <Button type="submit" variant="contained">
+                Login
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+      </Container>
     </>
   );
 }

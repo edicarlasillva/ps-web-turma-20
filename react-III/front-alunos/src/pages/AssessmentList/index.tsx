@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -12,10 +13,14 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { deleteAssessment } from "../../store/slices/assessmentsSlice";
 import { ModalCreateAssessment } from "../../components/ModalCreateAssessment";
 import { toggleModal } from "../../store/slices/modalSlice";
+import { useEffect } from "react";
 
 export function AssessmentList() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const assessments = useAppSelector((state) => state.assessments);
+  const user = useAppSelector((state) => state.user);
 
   function handleDeleteAssessment(id: string) {
     dispatch(deleteAssessment(id));
@@ -23,6 +28,17 @@ export function AssessmentList() {
 
   function handleAddAssessment() {
     dispatch(toggleModal());
+  }
+
+  useEffect(() => {
+    if (user === null) {
+      alert("Faça login para acessar as avaliações.");
+      navigate("/");
+    }
+  }, [user, navigate]);
+
+  if (!user) {
+    return null;
   }
 
   return (
