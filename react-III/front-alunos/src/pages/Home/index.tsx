@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid2";
 
 import { useAppDispatch } from "../../store/hooks";
 import { login } from "../../store/slices/userSlice";
+import { Header } from "../../components/Header";
 
 export function Home() {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ export function Home() {
 
   return (
     <>
+      <Header />
       <Container>
         <form onSubmit={handleSubmit}>
           <Typography variant="h6" gutterBottom>

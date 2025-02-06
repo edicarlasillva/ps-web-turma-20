@@ -6,12 +6,14 @@ import todosReducer from './slices/todoSlices'
 import assessmentsReducer from './slices/assessmentsSlice'
 import modalReducer from './slices/modalSlice'
 import userReducer from './slices/userSlice'
+import themeReducer from './slices/themeSlice'
 
 const rootReducer = combineReducers({
   todos: todosReducer,
   assessments: assessmentsReducer,
   modal: modalReducer,
-  user: userReducer
+  user: userReducer,
+  theme: themeReducer
 })
 
 export const persistedReducer = persistReducer({
