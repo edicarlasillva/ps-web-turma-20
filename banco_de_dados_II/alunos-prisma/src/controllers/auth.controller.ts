@@ -26,7 +26,8 @@ export class AuthController {
           id: true,
           name: true,
           email: true,
-          age: true
+          age: true,
+          token: true
         }
       })
 
