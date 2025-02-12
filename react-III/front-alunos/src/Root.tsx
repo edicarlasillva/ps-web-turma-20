@@ -3,6 +3,9 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 
 import { router } from "./routes";
 
+import { Header } from "./components/Header";
+import { LoadingModal } from "./components/LoadingModal";
+
 import themes from "./themes";
 import { useAppSelector } from "./store/hooks";
 
@@ -14,6 +17,8 @@ export function Root() {
   return (
     <ThemeProvider theme={currentTheme}>
       <CssBaseline />
+      <Header />
+      <LoadingModal />
       <RouterProvider router={router} />
     </ThemeProvider>
   );

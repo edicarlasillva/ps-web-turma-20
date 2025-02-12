@@ -7,13 +7,15 @@ import assessmentsReducer from './slices/assessmentsSlice'
 import modalReducer from './slices/modalSlice'
 import userReducer from './slices/userSlice'
 import themeReducer from './slices/themeSlice'
+import loadingReducer from './slices/loadingSlice'
 
 const rootReducer = combineReducers({
   todos: todosReducer,
   assessments: assessmentsReducer,
   modal: modalReducer,
   user: userReducer,
-  theme: themeReducer
+  theme: themeReducer,
+  loading: loadingReducer
 })
 
 export const persistedReducer = persistReducer({

@@ -1,32 +1,46 @@
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, TextField, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 
 import { useAppDispatch } from "../../store/hooks";
-import { login } from "../../store/slices/userSlice";
-import { Header } from "../../components/Header";
+import { ILogin } from "../../types";
+import { loginRequest } from "../../store/slices/userSlice";
 
 export function Home() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  function handleSubmit(e: FormEvent) {
+  const [formData, setFormData] = useState({ email: "", password: "" });
+
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    const response = {
-      id: 1,
-      name: "Carla Silva",
-      token: "7aca7c72-adcb-44e1-915b-007a58bef2fd",
+    // dados do formulário
+    const data: ILogin = {
+      email: formData.email,
+      password: formData.password,
     };
 
-    dispatch(login(response));
-    navigate("/avaliacoes");
+    // usar a função do async thunk
+    const user = await dispatch(loginRequest(data)).unwrap();
+
+    if (user) {
+      navigate("/avaliacoes");
+    }
+  }
+
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target;
+
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   }
 
   return (
     <>
-      <Header />
       <Container>
         <form onSubmit={handleSubmit}>
           <Typography variant="h6" gutterBottom>
@@ -40,6 +54,8 @@ export function Home() {
                 name="email"
                 variant="outlined"
                 label="E-mail"
+                value={formData.email}
+                onChange={handleInputChange}
               />
             </Grid>
 
@@ -49,6 +65,8 @@ export function Home() {
                 name="password"
                 variant="outlined"
                 label="Senha"
+                value={formData.password}
+                onChange={handleInputChange}
               />
             </Grid>
 
