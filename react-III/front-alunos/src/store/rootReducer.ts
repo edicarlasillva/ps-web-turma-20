@@ -8,6 +8,7 @@ import modalReducer from './slices/modalSlice'
 import userReducer from './slices/userSlice'
 import themeReducer from './slices/themeSlice'
 import loadingReducer from './slices/loadingSlice'
+import paginationReducer from './slices/paginationSlice'
 
 const rootReducer = combineReducers({
   todos: todosReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   modal: modalReducer,
   user: userReducer,
   theme: themeReducer,
-  loading: loadingReducer
+  loading: loadingReducer,
+  pagination: paginationReducer
 })
 
 export const persistedReducer = persistReducer({

@@ -1,34 +1,18 @@
 import { useNavigate } from "react-router-dom";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Container,
-  Typography,
-} from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import { Box, Button, Container, Typography } from "@mui/material";
 
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import {
-  deleteAssessment,
-  listAssessments,
-} from "../../store/slices/assessmentsSlice";
+import { listAssessments } from "../../store/slices/assessmentsSlice";
 import { ModalCreateAssessment } from "../../components/ModalCreateAssessment";
 import { toggleModal } from "../../store/slices/modalSlice";
 import { useEffect } from "react";
+import { TableAssessments } from "../../components/TableAssessments";
 
 export function AssessmentList() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const assessments = useAppSelector((state) => state.assessments);
   const user = useAppSelector((state) => state.user);
-
-  function handleDeleteAssessment(id: string) {
-    dispatch(deleteAssessment(id));
-  }
 
   function handleAddAssessment() {
     dispatch(toggleModal());
@@ -62,28 +46,7 @@ export function AssessmentList() {
           Criar avaliação
         </Button>
 
-        <Grid container spacing={2}>
-          {assessments.map((assesment) => (
-            <Grid key={assesment.id} size={{ xs: 6, md: 4 }}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h6">{assesment.discipline}</Typography>
-                  <Typography variant="body1">{assesment.grade}</Typography>
-                </CardContent>
-
-                <CardActions>
-                  <Button
-                    variant="contained"
-                    color="error"
-                    onClick={() => handleDeleteAssessment(assesment.id)}
-                  >
-                    Excluir
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        <TableAssessments />
 
         <ModalCreateAssessment />
       </Box>
