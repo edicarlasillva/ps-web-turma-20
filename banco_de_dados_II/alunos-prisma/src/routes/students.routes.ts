@@ -1,7 +1,7 @@
 import express from "express"
 
 import { StudentController } from "../controllers/student.controller"
-import { validateToken } from "../middleware/auth.middleware"
+import { validateLoginOlderAge, validateToken } from "../middleware/auth.middleware"
 import { AssessmentController } from "../controllers/assessment.controller"
 
 const studentController = new StudentController()
@@ -25,7 +25,7 @@ router.put('/students/:id', studentController.update)
 router.delete('/students/:id', studentController.delete)
 
 // Listar avaliações
-router.get('/students/:studentId/assessments', validateToken, assessmentController.index)
+router.get('/students/:studentId/assessments', [validateToken, validateLoginOlderAge], assessmentController.index)
 
 // Criar avaliação
 router.post('/students/:studentId/assessments', validateToken, assessmentController.store)

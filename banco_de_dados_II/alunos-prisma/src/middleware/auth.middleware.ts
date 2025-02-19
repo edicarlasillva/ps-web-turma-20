@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
-import { repository } from "../database/prisma.connection";
+import { AuthService } from "../services/auth.service";
+
+const authService = new AuthService()
 
 export async function validateToken(request: Request, response: Response, next: NextFunction) {
   try {
@@ -15,16 +17,10 @@ export async function validateToken(request: Request, response: Response, next: 
       })
     }
 
-    const student = await repository.student.findUnique({
-      where: { id: studentId }
-    })
+    const result = await authService.validateLogin(authorization, studentId)
 
-    if (!student || (student.token !== authorization)) {
-      return response.status(401).json({
-        success: false,
-        code: response.statusCode,
-        message: 'Token de autenticação inválido.'
-      })
+    if (!result.success) {
+      return response.status(result.code)
     }
 
     next()
@@ -33,6 +29,26 @@ export async function validateToken(request: Request, response: Response, next: 
       success: false,
       code: response.statusCode,
       message: `Autenticação falhou: ${error.toString()}`
+    })
+  }
+}
+
+export async function validateLoginOlderAge(request: Request, response: Response, next: NextFunction) {
+  const {studentId} = request.params
+
+  try {
+    const result = await authService.validateLoginOlderAge(studentId)
+
+    if (!result.success) {
+      return response.status(result.code).json(result)
+    }
+
+    next()
+  } catch (error: any) {
+    return response.status(500).json({
+      success: false,
+      code: response.statusCode,
+      message: error.toString()
     })
   }
 }
