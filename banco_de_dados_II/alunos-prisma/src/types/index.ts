@@ -8,5 +8,12 @@ export interface ResponseData {
 }
 
 export interface PayloadToken extends JwtPayload {
-  id: string
+  id: string,
+  type: TypeStudent
+}
+
+export enum TypeStudent {
+  Matriculado = 'M',
+  TechHelper = 'T',
+  Formado = 'F'
 }

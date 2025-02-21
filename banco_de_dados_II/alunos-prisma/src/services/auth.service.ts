@@ -16,16 +16,16 @@ export class AuthService {
         name: true,
         email: true,
         age: true,
+        type: true,
         token: true,
       },
     });
 
     if (!student) return null
 
-    // const token = randomUUID()
-
     const studentPayloadToken = {
-      id: student.id
+      id: student.id,
+      type: student.type
     }
 
     const token = this.generateToken(studentPayloadToken)
@@ -75,6 +75,10 @@ export class AuthService {
     } catch (error: any) {
       return null
     }
+  }
+
+  public decodeToken(token: string) {
+    return jwt.decode(token)
   }
 
   public async validateLoginOlderAge(studentId: string): Promise<ResponseData> {

@@ -21,6 +21,7 @@ model Student {
   age      Int?
 
   token String?
+  type  String  @default("M") @db.VarChar(1)
 
   enrollments Enrollment[]
 

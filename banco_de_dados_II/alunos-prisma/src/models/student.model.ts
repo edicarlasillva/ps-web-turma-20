@@ -1,4 +1,5 @@
 import { randomUUID } from "crypto"
+import { TypeStudent } from "../types"
 
 export class Student {
   private _id: string
@@ -7,6 +8,7 @@ export class Student {
     private _name: string,
     private _email: string,
     private _password: string,
+    private _type: TypeStudent,
     private _age?: number
   ) {
     this._id = randomUUID()
@@ -31,6 +33,8 @@ export class Student {
   get age(): number | undefined {
     return this._age
   }
-}
 
-// const aluno1 = new Student('Carla', 'carla@gmail.com', 'senhasecreta', 36)
+  get type(): TypeStudent {
+    return this._type
+  }
+}

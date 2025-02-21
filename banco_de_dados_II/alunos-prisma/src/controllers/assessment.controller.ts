@@ -51,21 +51,12 @@ export class AssessmentController {
     try {
       const { studentId } = request.params
       const { discipline, grade } = request.body
-      const { authorization } = request.headers
 
       if (!discipline || !grade) {
         return response.status(400).json({
           success: false,
           code: response.statusCode,
           message: 'Os campos "discipline" e "grade" são obrigatórios.'
-        })
-      }
-
-      if (!authorization) {
-        return response.status(401).json({
-          success: false,
-          code: response.statusCode,
-          message: 'Token de autenticação não informado.'
         })
       }
 
@@ -78,14 +69,6 @@ export class AssessmentController {
           success: false,
           code: response.statusCode,
           message: 'Estudante não encontrado.'
-        })
-      }
-
-      if (student.token !== authorization) {
-        return response.status(401).json({
-          success: false,
-          code: response.statusCode,
-          message: 'Token de autenticação inválido.'
         })
       }
 
