@@ -4,9 +4,7 @@ import { StudentController } from "../controllers/student.controller";
 import { validateToken } from "../middleware/auth.middleware";
 import { AssessmentController } from "../controllers/assessment.controller";
 import {
-  validadeAuthorizationPermissions,
-  validateCreateAssessment,
-  validateEditAndDeleteAssessment,
+  validadeAuthorizationPermissions
 } from "../middleware/authorization.middleware";
 import { TypeStudent } from "../types";
 
