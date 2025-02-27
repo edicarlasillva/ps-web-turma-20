@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import { repository } from "../database/prisma.connection";
+import repository from "../database/prisma.connection";
 import { AuthDTO } from "../dtos/auth.dto";
 import { PayloadToken, ResponseData } from "../types";
 
@@ -35,7 +35,13 @@ export class AuthService {
       },
     });
 
-    if (!student) return null
+    if (!student) {
+      return {
+        success: false,
+        code: 401,
+        message: 'Credenciais inválidas.'
+      }
+    }
 
     const studentPayloadToken = {
       id: student.id,

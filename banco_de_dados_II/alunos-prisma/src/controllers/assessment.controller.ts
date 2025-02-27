@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { repository } from "../database/prisma.connection";
+import repository from "../database/prisma.connection";
 import { Assessment } from "../models/assessment.model";
 
 export class AssessmentController {

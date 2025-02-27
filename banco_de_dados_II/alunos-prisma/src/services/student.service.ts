@@ -1,4 +1,4 @@
-import { repository } from "../database/prisma.connection";
+import repository from "../database/prisma.connection";
 
 import { CreateStudentDTO, UpdateStudentDTO } from "../dtos/student.dto";
 import { Student } from "../models/student.model";
