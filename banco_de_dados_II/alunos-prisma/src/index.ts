@@ -1,22 +1,13 @@
-import express from "express"
-import cors from 'cors'
 import * as dotenv from 'dotenv'
-
-import authRoutes from './routes/auth.routes'
-import studentRoutes from './routes/students.routes'
 
 import swagger from 'swagger-ui-express'
 import swaggerJson from './docs/swagger.json'
 
-const app = express()
+import { createApp } from './server'
 
 dotenv.config()
 
-app.use(express.json())
-app.use(cors())
-
-app.use(authRoutes)
-app.use(studentRoutes)
+const app = createApp()
 
 app.use('/docs', swagger.serve)
 app.use('/docs', swagger.setup(swaggerJson))

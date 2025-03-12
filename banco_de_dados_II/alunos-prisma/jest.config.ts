@@ -14,7 +14,4 @@ export default {
   collectCoverageFrom: ["<rootDir>/src/**/*.ts"],
   coverageDirectory: "coverage",
   coveragePathIgnorePatterns: ["\\\\node_modules\\\\"],
-
-  // Colocar quando for usar o mock
-  setupFilesAfterEnv: ["<rootDir>/tests/config/prisma.mock.ts"],
 };

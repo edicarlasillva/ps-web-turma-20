@@ -1,5 +1,5 @@
-import { AuthService } from '../src/services/auth.service'
-import { prismaMock } from './config/prisma.mock'
+import { AuthService } from '../../src/services/auth.service'
+import { prismaMock } from './../config/prisma.mock'
 
 import * as dotenv from 'dotenv'
 dotenv.config()
