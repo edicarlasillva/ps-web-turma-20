@@ -20,7 +20,11 @@ export async function validateToken(request: Request, response: Response, next: 
     const result = await authService.validateLogin(authorization, studentId)
 
     if (!result.success) {
-      return response.status(result.code)
+      return response.status(result.code).json({
+        success: false,
+        code: result.code,
+        message: 'Token de autenticação inválido'
+      })
     }
 
     next()

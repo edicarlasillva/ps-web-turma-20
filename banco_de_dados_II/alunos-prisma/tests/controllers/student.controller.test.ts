@@ -3,7 +3,14 @@ import supertest from 'supertest'
 import { createApp } from '../../src/server'
 import { TypeStudent } from '../../src/types'
 
+import repository from '../../src/database/prisma.connection'
+
 describe('Testes integrados para criação de um aluno via api.', () => {
+  afterAll(async () => {
+    await repository.assessment.deleteMany()
+    await repository.student.deleteMany()
+  })
+  
   it('Deve retornar 400 quando o campo nome não seja informado.', async () => {
     // 1 - sut
     const sut = createApp()
